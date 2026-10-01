@@ -1,0 +1,4659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>F&A Star Beauty Salon | Remich</title>
+
+<meta name="description"
+      content="F&A Star Beauty Salon à Remich. Coiffure homme, femme et enfant, manucure, épilation et beauté. 5 Rue du Pont, Remich.">
+<meta name="keywords"
+      content="F&A Star Beauty Salon, salon coiffure Remich, coiffeur Remich, barber Remich, beauté Remich, manucure Remich">
+<meta name="author" content="F&A Star Beauty Salon">
+
+<meta property="og:title" content="F&A Star Beauty Salon — Remich">
+<meta property="og:description"
+      content="Un espace beauté et coiffure au cœur de Remich.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet">
+
+<style>
+
+/* ============================================================
+   F&A STAR BEAUTY SALON
+   PREMIUM SINGLE PAGE WEBSITE
+   ============================================================ */
+
+:root {
+    --black: #0a0908;
+    --black-soft: #11100f;
+    --black-card: #161412;
+    --black-light: #1d1a17;
+
+    --gold: #c9a86a;
+    --gold-light: #e6c98f;
+    --gold-dark: #927445;
+
+    --cream: #f5efe5;
+    --cream-soft: #ded6ca;
+    --muted: #96908a;
+
+    --white: #ffffff;
+
+    --border: rgba(201,168,106,.18);
+    --border-light: rgba(255,255,255,.08);
+
+    --serif: "Playfair Display", serif;
+    --sans: "Manrope", sans-serif;
+    --body: "DM Sans", sans-serif;
+
+    --container: 1240px;
+
+    --shadow:
+        0 25px 70px rgba(0,0,0,.35);
+
+    --transition:
+        all .55s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--black);
+}
+
+body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--black);
+}
+
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080807;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dark);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
+
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-inner {
+    text-align: center;
+}
+
+.preloader-logo {
+    font-family: var(--serif);
+    font-size: 42px;
+    letter-spacing: 4px;
+    color: var(--cream);
+}
+
+.preloader-subtitle {
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.loader-line {
+    width: 180px;
+    height: 1px;
+    background: rgba(255,255,255,.12);
+    margin: 30px auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-100%);
+    animation: loader 1.7s ease forwards;
+}
+
+@keyframes loader {
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+/* ============================================================
+   PAGE PROGRESS
+   ============================================================ */
+
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    z-index: 10001;
+    background: var(--gold);
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
+
+    padding: 22px 0;
+
+    transition:
+        background .4s ease,
+        padding .4s ease,
+        border .4s ease;
+}
+
+.navbar.scrolled {
+    padding: 13px 0;
+    background: rgba(10,9,8,.91);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.nav-container {
+    width: min(calc(100% - 48px), var(--container));
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-mark {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--serif);
+    color: var(--gold);
+    font-size: 17px;
+
+    position: relative;
+}
+
+.logo-mark::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201,168,106,.3);
+    border-radius: 50%;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-name {
+    font-family: var(--serif);
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.logo-location {
+    color: var(--gold);
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: rgba(255,255,255,.74);
+
+    position: relative;
+
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width .35s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-switcher {
+    display: flex;
+    border: 1px solid var(--border-light);
+    border-radius: 999px;
+    padding: 3px;
+}
+
+.language-switcher button {
+    border: 0;
+    background: transparent;
+    color: rgba(255,255,255,.55);
+    width: 33px;
+    height: 28px;
+    border-radius: 999px;
+    font-size: 9px;
+    font-weight: 700;
+    transition: .3s ease;
+}
+
+.language-switcher button.active {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.nav-book {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 11px 17px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: .35s ease;
+}
+
+.nav-book:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.mobile-menu-button {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-light);
+    background: transparent;
+    color: white;
+}
+
+.mobile-menu-button span {
+    display: block;
+    width: 19px;
+    height: 1px;
+    background: white;
+    margin: 5px auto;
+    transition: .3s ease;
+}
+
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(8,8,7,.98);
+    z-index: 8000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .45s ease;
+}
+
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-inner {
+    width: min(88%, 500px);
+    text-align: center;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 17px 0;
+
+    font-family: var(--serif);
+    font-size: 31px;
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+
+    transform: translateY(15px);
+    opacity: 0;
+
+    transition:
+        transform .5s ease,
+        opacity .5s ease;
+}
+
+.mobile-menu.open a {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-menu a:nth-child(1) { transition-delay: .05s; }
+.mobile-menu a:nth-child(2) { transition-delay: .10s; }
+.mobile-menu a:nth-child(3) { transition-delay: .15s; }
+.mobile-menu a:nth-child(4) { transition-delay: .20s; }
+.mobile-menu a:nth-child(5) { transition-delay: .25s; }
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transform: scale(1.06);
+
+    animation: heroZoom 12s ease-out forwards;
+}
+
+@keyframes heroZoom {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.38) 0%,
+            rgba(0,0,0,.05) 28%,
+            rgba(5,5,4,.26) 48%,
+            rgba(5,5,4,.94) 100%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(calc(100% - 48px), var(--container));
+    margin: auto;
+
+    padding-top: 160px;
+    padding-bottom: 72px;
+}
+
+.hero-topline {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 23px;
+
+    color: var(--gold-light);
+
+    font-size: 10px;
+    letter-spacing: 3.4px;
+    text-transform: uppercase;
+}
+
+.hero-topline::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.hero h1 {
+    max-width: 900px;
+
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(58px, 8vw, 118px);
+    line-height: .91;
+    letter-spacing: -3px;
+}
+
+.hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+}
+
+.hero-description {
+    max-width: 540px;
+
+    margin-top: 30px;
+
+    color: rgba(255,255,255,.72);
+
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 43px;
+    gap: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 52px;
+    padding: 0 24px;
+
+    background: var(--gold);
+    color: var(--black);
+
+    border: 1px solid var(--gold);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    transition: var(--transition);
+}
+
+.button-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(201,168,106,.17);
+}
+
+.button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 0 24px;
+
+    border: 1px solid rgba(255,255,255,.27);
+    color: white;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    transition: var(--transition);
+}
+
+.button-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    transform: translateY(-3px);
+}
+
+.rating-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 17px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(10,9,8,.45);
+    backdrop-filter: blur(15px);
+}
+
+.stars {
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.rating-number {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.rating-text {
+    color: rgba(255,255,255,.53);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.scroll-indicator {
+    position: absolute;
+    right: 25px;
+    bottom: 45px;
+    z-index: 2;
+
+    writing-mode: vertical-rl;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.55);
+}
+
+.scroll-indicator::before {
+    content: "";
+    display: inline-block;
+
+    width: 1px;
+    height: 50px;
+
+    background: var(--gold);
+
+    margin-bottom: 12px;
+}
+
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+
+.marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: #0d0c0b;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 18px 30px;
+
+    font-family: var(--serif);
+    font-size: 18px;
+
+    white-space: nowrap;
+}
+
+.marquee-item span {
+    color: var(--gold);
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* ============================================================
+   GENERAL
+   ============================================================ */
+
+.section {
+    padding: 130px 0;
+}
+
+.container {
+    width: min(calc(100% - 48px), var(--container));
+    margin: auto;
+}
+
+.section-header {
+    max-width: 760px;
+    margin-bottom: 65px;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+.section-label::before {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.section-title {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5vw, 75px);
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -1.5px;
+}
+
+.section-title em {
+    color: var(--gold-light);
+    font-style: italic;
+}
+
+.section-description {
+    color: var(--muted);
+    max-width: 650px;
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+
+.intro {
+    background:
+        radial-gradient(
+            circle at 15% 40%,
+            rgba(201,168,106,.055),
+            transparent 30%
+        );
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 90px;
+    align-items: center;
+}
+
+.image-frame {
+    position: relative;
+}
+
+.image-frame::before {
+    content: "";
+    position: absolute;
+
+    top: -18px;
+    left: -18px;
+
+    width: 75%;
+    height: 75%;
+
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+
+    opacity: .5;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 620px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.image-caption {
+    position: absolute;
+    z-index: 3;
+
+    bottom: 25px;
+    right: -25px;
+
+    background: var(--black-card);
+    border: 1px solid var(--border);
+
+    padding: 20px 24px;
+
+    box-shadow: var(--shadow);
+}
+
+.image-caption strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 22px;
+}
+
+.image-caption small {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 8px;
+}
+
+.intro-copy {
+    padding-top: 20px;
+}
+
+.intro-copy .large-text {
+    font-family: var(--serif);
+    font-size: clamp(30px, 3.3vw, 49px);
+    line-height: 1.18;
+    font-weight: 400;
+}
+
+.intro-copy .large-text em {
+    color: var(--gold-light);
+}
+
+.intro-copy p {
+    margin-top: 27px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.95;
+    max-width: 590px;
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 30px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.text-link span {
+    transition: transform .3s ease;
+}
+
+.text-link:hover span {
+    transform: translateX(7px);
+}
+
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+
+.services {
+    background: #0e0d0c;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-light);
+}
+
+.service-card {
+    min-height: 310px;
+
+    padding: 38px 32px;
+
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+
+    position: relative;
+    overflow: hidden;
+
+    transition: var(--transition);
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -90px;
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(201,168,106,.05);
+
+    transition: .7s ease;
+}
+
+.service-card:hover {
+    background: #141210;
+}
+
+.service-card:hover::before {
+    transform: scale(2);
+}
+
+.service-number {
+    font-family: var(--serif);
+    color: rgba(201,168,106,.38);
+    font-size: 16px;
+}
+
+.service-icon {
+    margin-top: 48px;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gold);
+}
+
+.service-card h3 {
+    margin-top: 24px;
+
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.service-card p {
+    margin-top: 10px;
+
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+
+    max-width: 280px;
+}
+
+.service-arrow {
+    position: absolute;
+    right: 28px;
+    top: 28px;
+
+    color: rgba(255,255,255,.2);
+
+    font-size: 20px;
+
+    transition: .35s ease;
+}
+
+.service-card:hover .service-arrow {
+    color: var(--gold);
+    transform: translate(4px,-4px);
+}
+
+
+/* ============================================================
+   VIDEO EXPERIENCE
+   ============================================================ */
+
+.experience {
+    position: relative;
+    min-height: 680px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.experience-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.experience-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,4,3,.94),
+            rgba(5,4,3,.5),
+            rgba(5,4,3,.75)
+        );
+}
+
+.experience-content {
+    position: relative;
+    z-index: 2;
+}
+
+.experience-content .section-title {
+    max-width: 780px;
+}
+
+.experience-content p {
+    max-width: 560px;
+    color: rgba(255,255,255,.67);
+    margin-top: 25px;
+    line-height: 1.9;
+}
+
+.video-play {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--gold);
+    background: rgba(10,9,8,.35);
+    color: var(--gold);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 35px;
+
+    transition: .4s ease;
+}
+
+.video-play:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: scale(1.07);
+}
+
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+
+.gallery {
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(201,168,106,.05),
+            transparent 28%
+        );
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr .9fr;
+    grid-template-rows: 330px 330px;
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #151311;
+}
+
+.gallery-item:nth-child(1) {
+    grid-row: span 2;
+}
+
+.gallery-item:nth-child(4) {
+    grid-column: span 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition:
+        transform .9s cubic-bezier(.16,1,.3,1),
+        filter .6s ease;
+}
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0,0,0,.7)
+        );
+
+    opacity: 0;
+    transition: .4s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    z-index: 2;
+
+    left: 24px;
+    bottom: 22px;
+
+    transform: translateY(12px);
+    opacity: 0;
+
+    transition: .45s ease;
+}
+
+.gallery-overlay span {
+    color: var(--gold-light);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.gallery-overlay strong {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+    filter: brightness(.72);
+}
+
+.gallery-item:hover::after,
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   VALUES
+   ============================================================ */
+
+.values {
+    background: #0e0d0c;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.values-image {
+    position: relative;
+}
+
+.values-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+.values-list {
+    border-top: 1px solid var(--border-light);
+}
+
+.value {
+    padding: 28px 0;
+
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    gap: 20px;
+
+    border-bottom: 1px solid var(--border-light);
+}
+
+.value-number {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 17px;
+}
+
+.value h3 {
+    font-family: var(--serif);
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.value p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+    max-width: 470px;
+}
+
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+
+.testimonials {
+    background: #090807;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+}
+
+.review {
+    min-height: 320px;
+
+    padding: 35px;
+
+    border: 1px solid var(--border-light);
+    background: #100f0d;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: var(--transition);
+}
+
+.review:hover {
+    border-color: var(--border);
+    transform: translateY(-7px);
+}
+
+.review-stars {
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-size: 11px;
+}
+
+.review-quote {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.4;
+    margin-top: 25px;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border-light);
+}
+
+.review-author strong {
+    font-size: 11px;
+}
+
+.review-author span {
+    color: var(--muted);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+
+.booking {
+    position: relative;
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(201,168,106,.08),
+            transparent 30%
+        );
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: 90px;
+    align-items: start;
+}
+
+.booking-intro {
+    position: sticky;
+    top: 120px;
+}
+
+.booking-intro p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+    margin-top: 25px;
+}
+
+.contact-mini {
+    margin-top: 35px;
+}
+
+.contact-mini-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid var(--border-light);
+
+    font-size: 12px;
+}
+
+.contact-mini-icon {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gold);
+}
+
+.booking-form {
+    padding: 45px;
+
+    border: 1px solid var(--border-light);
+    background: #100f0d;
+
+    box-shadow: var(--shadow);
+}
+
+.form-title {
+    font-family: var(--serif);
+    font-size: 33px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid rgba(255,255,255,.1);
+    background: #090807;
+
+    color: white;
+
+    padding: 15px;
+
+    outline: none;
+
+    transition: .3s ease;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.form-group select option {
+    background: #11100f;
+}
+
+.form-submit {
+    width: 100%;
+    border: 0;
+    margin-top: 8px;
+}
+
+.form-note {
+    color: #706b65;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   HOURS
+   ============================================================ */
+
+.hours {
+    border-top: 1px solid var(--border-light);
+}
+
+.hours-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.hours-list {
+    border-top: 1px solid var(--border-light);
+}
+
+.hours-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border-light);
+
+    font-size: 12px;
+}
+
+.hours-row span:last-child {
+    color: var(--gold-light);
+    text-align: right;
+}
+
+.hours-note {
+    margin-top: 22px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+
+/* ============================================================
+   MAP
+   ============================================================ */
+
+.location {
+    padding-top: 0;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.map-box {
+    min-height: 500px;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border: 0;
+    filter: grayscale(100%) contrast(1.05);
+}
+
+.location-info {
+    padding: 65px;
+
+    background: #12100e;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.location-info h2 {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.location-info p {
+    color: var(--muted);
+    margin-top: 22px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.location-address {
+    margin-top: 35px;
+}
+
+.location-address strong {
+    display: block;
+    color: var(--gold);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.location-address span {
+    font-size: 14px;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+    padding: 80px 0 30px;
+
+    border-top: 1px solid var(--border-light);
+
+    background: #070706;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr .8fr;
+    gap: 80px;
+
+    padding-bottom: 70px;
+}
+
+.footer-brand h2 {
+    font-family: var(--serif);
+    font-size: 39px;
+    font-weight: 400;
+}
+
+.footer-brand p {
+    color: var(--muted);
+    max-width: 390px;
+    margin-top: 17px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.footer-heading {
+    color: var(--gold);
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    display: block;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: 12px;
+
+    margin-bottom: 12px;
+
+    transition: .3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    transform: translateX(3px);
+}
+
+.footer-bottom {
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border-light);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #5e5a55;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.social-link {
+    color: var(--gold);
+}
+
+
+/* ============================================================
+   FLOATING ACTIONS
+   ============================================================ */
+
+.floating-actions {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 7000;
+
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.float-button {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #141210;
+
+    border: 1px solid var(--border);
+
+    color: var(--gold);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+
+    transition: .35s ease;
+}
+
+.float-button:hover {
+    transform: scale(1.08);
+    background: var(--gold);
+    color: var(--black);
+}
+
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+
+    background: rgba(4,4,3,.96);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .35s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: min(92vw, 1200px);
+    max-height: 88vh;
+    object-fit: contain;
+
+    box-shadow: 0 30px 100px rgba(0,0,0,.6);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(0,0,0,.4);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+.lightbox-close {
+    right: 25px;
+    top: 25px;
+}
+
+.lightbox-prev {
+    left: 25px;
+}
+
+.lightbox-next {
+    right: 25px;
+}
+
+.lightbox button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: .1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: .2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: .3s;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    .nav-links,
+    .nav-book {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .intro-grid,
+    .values-grid,
+    .booking-layout,
+    .hours-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .booking-intro {
+        position: static;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review {
+        min-height: 260px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .location-info {
+        min-height: 400px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .container,
+    .nav-container,
+    .hero-content {
+        width: min(calc(100% - 30px), var(--container));
+    }
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .hero {
+        min-height: 800px;
+    }
+
+    .hero h1 {
+        font-size: clamp(53px, 15vw, 82px);
+        letter-spacing: -2px;
+    }
+
+    .hero-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .rating-card {
+        width: 100%;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .image-frame img,
+    .values-image img {
+        height: 470px;
+    }
+
+    .image-caption {
+        right: 12px;
+        bottom: 15px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: 270px;
+    }
+
+    .gallery-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 260px 220px 220px 220px;
+    }
+
+    .gallery-item:nth-child(1) {
+        grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+        grid-column: span 2;
+    }
+
+    .booking-form {
+        padding: 25px 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .location-info {
+        padding: 45px 25px;
+    }
+
+    .location-info h2 {
+        font-size: 39px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .floating-actions {
+        right: 13px;
+        bottom: 13px;
+    }
+
+    .float-button {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ============================================================
+     PRELOADER
+     ============================================================ -->
+
+<div class="preloader" id="preloader">
+
+    <div class="preloader-inner">
+
+        <div class="preloader-logo">
+            F&A
+        </div>
+
+        <div class="preloader-subtitle">
+            Star Beauty Salon · Remich
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+<div class="progress" id="progress"></div>
+
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+
+<header class="navbar" id="navbar">
+
+    <div class="nav-container">
+
+        <a href="#accueil" class="logo">
+
+            <div class="logo-mark">
+                F&A
+            </div>
+
+            <div class="logo-text">
+
+                <span class="logo-name">
+                    F&A Star
+                </span>
+
+                <span class="logo-location">
+                    Beauty Salon · Remich
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#accueil" data-i18n="navHome">
+                Accueil
+            </a>
+
+            <a href="#salon" data-i18n="navSalon">
+                Le salon
+            </a>
+
+            <a href="#services" data-i18n="navServices">
+                Services
+            </a>
+
+            <a href="#galerie" data-i18n="navGallery">
+                Galerie
+            </a>
+
+            <a href="#avis" data-i18n="navReviews">
+                Avis
+            </a>
+
+            <a href="#contact" data-i18n="navContact">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <div class="language-switcher">
+
+                <button class="active" data-lang="fr">
+                    FR
+                </button>
+
+                <button data-lang="de">
+                    DE
+                </button>
+
+                <button data-lang="en">
+                    EN
+                </button>
+
+            </div>
+
+            <a href="#reservation" class="nav-book" data-i18n="book">
+                Réserver
+            </a>
+
+            <button class="mobile-menu-button" id="menuButton">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ============================================================
+     MOBILE MENU
+     ============================================================ -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-inner">
+
+        <a href="#accueil">Accueil</a>
+        <a href="#salon">Le salon</a>
+        <a href="#services">Services</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avis">Avis</a>
+        <a href="#reservation">Réserver</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+
+<section class="hero" id="accueil">
+
+    <div class="hero-background">
+
+        <!--
+            IMPORTANT:
+            This is a LOCAL image.
+            Replace images/fa-star-01.jpg with an ACTUAL
+            photo from F&A Star Beauty Salon.
+        -->
+
+        <img
+            src="images/fa-star-01.jpg"
+            alt="F&A Star Beauty Salon à Remich"
+        >
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-topline">
+            Remich · Luxembourg
+        </div>
+
+
+        <h1 class="reveal">
+
+            Votre style.
+            <br>
+
+            <em>Votre signature.</em>
+
+        </h1>
+
+
+        <p class="hero-description reveal reveal-delay-1"
+           data-i18n="heroDescription">
+
+            Une adresse beauté pensée autour du style,
+            de la précision et d'une véritable attention
+            portée à chaque personne.
+
+        </p>
+
+
+        <div class="hero-bottom reveal reveal-delay-2">
+
+            <div class="hero-buttons">
+
+                <a href="#reservation"
+                   class="button-primary"
+                   data-i18n="bookAppointment">
+
+                    Prendre rendez-vous
+                    <span>↗</span>
+
+                </a>
+
+                <a href="#galerie"
+                   class="button-secondary"
+                   data-i18n="discover">
+
+                    Découvrir le salon
+
+                </a>
+
+            </div>
+
+
+            <div class="rating-card">
+
+                <div>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <div class="rating-text">
+                        Avis clients
+                    </div>
+
+                </div>
+
+                <div class="rating-number">
+                    4.9
+                </div>
+
+                <div class="rating-text">
+                    / 5
+                    <br>
+                    29 avis
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll-indicator">
+        Scroll
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     MARQUEE
+     ============================================================ -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <div class="marquee-item">
+            Coiffure <span>✦</span>
+            Beauté <span>✦</span>
+            Style <span>✦</span>
+            Précision <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            F&A Star Beauty Salon <span>✦</span>
+            Remich <span>✦</span>
+            Luxembourg <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            Coiffure <span>✦</span>
+            Beauté <span>✦</span>
+            Style <span>✦</span>
+            Précision <span>✦</span>
+        </div>
+
+        <div class="marquee-item">
+            F&A Star Beauty Salon <span>✦</span>
+            Remich <span>✦</span>
+            Luxembourg <span>✦</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ============================================================
+     INTRO / SALON
+     ============================================================ -->
+
+<section class="section intro" id="salon">
+
+    <div class="container">
+
+        <div class="intro-grid">
+
+            <div class="image-frame reveal">
+
+                <img
+                    src="images/fa-star-02.jpg"
+                    alt="Intérieur de F&A Star Beauty Salon"
+                    loading="lazy"
+                >
+
+                <div class="image-caption">
+
+                    <strong>F&A Star</strong>
+
+                    <small>
+                        Beauty Salon · Remich
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="intro-copy reveal reveal-delay-1">
+
+                <div class="section-label">
+                    L'expérience F&A
+                </div>
+
+                <div class="large-text"
+                     data-i18n="introTitle">
+
+                    Plus qu'une coiffure,
+                    <em>un moment pour soi.</em>
+
+                </div>
+
+
+                <p data-i18n="introText">
+
+                    F&A Star Beauty Salon est une adresse dédiée
+                    à la coiffure et à la beauté à Remich.
+                    L'équipe accueille les femmes, les hommes
+                    et les enfants avec une approche professionnelle
+                    et personnalisée.
+
+                </p>
+
+
+                <p>
+
+                    Que vous recherchiez une coupe,
+                    une mise en beauté, une manucure ou
+                    un service beauté spécifique, l'objectif
+                    reste le même : prendre soin du détail.
+
+                </p>
+
+
+                <a href="#services" class="text-link">
+
+                    Découvrir les services
+
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+
+<section class="section services" id="services">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Nos prestations
+            </div>
+
+            <h2 class="section-title"
+                data-i18n="servicesTitle">
+
+                La beauté,
+                <br>
+                <em>dans le détail.</em>
+
+            </h2>
+
+            <p class="section-description"
+               data-i18n="servicesDescription">
+
+                Une sélection de prestations pour les femmes,
+                les hommes et les enfants, ainsi que différents
+                soins beauté.
+
+            </p>
+
+        </div>
+
+
+        <div class="service-grid">
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    01
+                </span>
+
+                <div class="service-icon">
+                    ✦
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3 data-i18n="serviceMen">
+                    Coiffure homme
+                </h3>
+
+                <p data-i18n="serviceMenText">
+                    Coupe, coiffage et prestations
+                    adaptées au style recherché.
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal reveal-delay-1">
+
+                <span class="service-number">
+                    02
+                </span>
+
+                <div class="service-icon">
+                    ◇
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3 data-i18n="serviceWomen">
+                    Coiffure femme
+                </h3>
+
+                <p data-i18n="serviceWomenText">
+                    Des prestations pensées pour
+                    mettre en valeur votre personnalité.
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal reveal-delay-2">
+
+                <span class="service-number">
+                    03
+                </span>
+
+                <div class="service-icon">
+                    ○
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3 data-i18n="serviceKids">
+                    Coiffure enfant
+                </h3>
+
+                <p data-i18n="serviceKidsText">
+                    Des prestations adaptées aux
+                    plus jeunes dans une ambiance agréable.
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal">
+
+                <span class="service-number">
+                    04
+                </span>
+
+                <div class="service-icon">
+                    ♢
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3 data-i18n="serviceNails">
+                    Manucure
+                </h3>
+
+                <p data-i18n="serviceNailsText">
+                    Prenez également soin de vos mains
+                    avec nos prestations de manucure.
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal reveal-delay-1">
+
+                <span class="service-number">
+                    05
+                </span>
+
+                <div class="service-icon">
+                    ✧
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3 data-i18n="serviceWax">
+                    Épilation
+                </h3>
+
+                <p data-i18n="serviceWaxText">
+                    Des prestations beauté complémentaires
+                    pour une mise en beauté complète.
+                </p>
+
+            </article>
+
+
+            <article class="service-card reveal reveal-delay-2">
+
+                <span class="service-number">
+                    06
+                </span>
+
+                <div class="service-icon">
+                    ✺
+                </div>
+
+                <span class="service-arrow">
+                    ↗
+                </span>
+
+                <h3>
+                    Microblading
+                </h3>
+
+                <p>
+                    Une prestation beauté dédiée
+                    à la définition et à l'harmonie du regard.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     VIDEO EXPERIENCE
+     ============================================================ -->
+
+<section class="experience">
+
+    <!--
+        LOCAL VIDEO ONLY.
+        Put the real salon video at:
+        media/fa-star-reel.mp4
+
+        If you don't have a video yet, the JavaScript
+        below will hide the video automatically.
+    -->
+
+    <video
+        class="experience-video"
+        id="salonVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="images/fa-star-reel-poster.jpg">
+
+        <source
+            src="media/fa-star-reel.mp4"
+            type="video/mp4">
+
+    </video>
+
+    <div class="experience-overlay"></div>
+
+
+    <div class="container">
+
+        <div class="experience-content reveal">
+
+            <div class="section-label">
+                L'univers F&A
+            </div>
+
+            <h2 class="section-title">
+
+                Entrez dans
+                <br>
+                <em>l'expérience.</em>
+
+            </h2>
+
+            <p>
+                Découvrez l'ambiance du salon,
+                les détails de l'espace et le travail
+                réalisé au quotidien par l'équipe F&A Star.
+            </p>
+
+            <button
+                class="video-play"
+                id="videoPlay"
+                aria-label="Lire la vidéo">
+
+                ▶
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     GALLERY
+     ============================================================ -->
+
+<section class="section gallery" id="galerie">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Galerie
+            </div>
+
+            <h2 class="section-title">
+
+                Le style
+                <br>
+                <em>en images.</em>
+
+            </h2>
+
+            <p class="section-description">
+                Utilisez ici les vraies photos du salon,
+                de l'équipe, de l'espace et des réalisations.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+
+            <div class="gallery-item reveal"
+                 data-image="images/fa-star-03.jpg">
+
+                <img
+                    src="images/fa-star-03.jpg"
+                    alt="F&A Star Beauty Salon"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>F&A Star</span>
+                    <strong>Le salon</strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal reveal-delay-1"
+                 data-image="images/fa-star-04.jpg">
+
+                <img
+                    src="images/fa-star-04.jpg"
+                    alt="Espace beauté F&A Star"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Beauty</span>
+                    <strong>L'espace</strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal reveal-delay-2"
+                 data-image="images/fa-star-05.jpg">
+
+                <img
+                    src="images/fa-star-05.jpg"
+                    alt="Salon F&A Star"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Style</span>
+                    <strong>L'ambiance</strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal"
+                 data-image="images/fa-star-06.jpg">
+
+                <img
+                    src="images/fa-star-06.jpg"
+                    alt="F&A Star Beauty Salon Remich"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>F&A Star</span>
+                    <strong>Le savoir-faire</strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal reveal-delay-1"
+                 data-image="images/fa-star-07.jpg">
+
+                <img
+                    src="images/fa-star-07.jpg"
+                    alt="Coiffure F&A Star"
+                    loading="lazy"
+                >
+
+                <div class="gallery-overlay">
+                    <span>Hair</span>
+                    <strong>Le détail</strong>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     VALUES
+     ============================================================ -->
+
+<section class="section values">
+
+    <div class="container">
+
+        <div class="values-grid">
+
+
+            <div class="values-image reveal">
+
+                <img
+                    src="images/fa-star-08.jpg"
+                    alt="F&A Star Beauty Salon"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div>
+
+                <div class="section-header reveal">
+
+                    <div class="section-label">
+                        Notre approche
+                    </div>
+
+                    <h2 class="section-title">
+
+                        Une attention
+                        <br>
+                        <em>qui se voit.</em>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="values-list">
+
+
+                    <div class="value reveal">
+
+                        <div class="value-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Professionnalisme
+                            </h3>
+
+                            <p>
+                                Une équipe attentive à la qualité
+                                du service et au résultat recherché.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="value reveal">
+
+                        <div class="value-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Écoute
+                            </h3>
+
+                            <p>
+                                Comprendre votre envie avant de
+                                commencer permet de créer une expérience
+                                réellement personnalisée.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="value reveal">
+
+                        <div class="value-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Convivialité
+                            </h3>
+
+                            <p>
+                                Un espace où l'on vient prendre soin
+                                de soi tout en profitant d'une atmosphère
+                                chaleureuse.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="value reveal">
+
+                        <div class="value-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Précision
+                            </h3>
+
+                            <p>
+                                Le résultat final repose souvent
+                                sur les petits détails.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+
+<section class="section testimonials" id="avis">
+
+    <div class="container">
+
+        <div class="section-header reveal">
+
+            <div class="section-label">
+                Avis clients
+            </div>
+
+            <h2 class="section-title">
+
+                Des clients qui
+                <br>
+                <em>reviennent.</em>
+
+            </h2>
+
+            <p class="section-description">
+                Quelques témoignages publiés par les clients
+                de F&A Star Beauty Salon.
+            </p>
+
+        </div>
+
+
+        <div class="review-grid">
+
+
+            <article class="review reveal">
+
+                <div>
+
+                    <div class="review-stars">
+                        ★★★★★
+                    </div>
+
+                    <div class="review-quote">
+                        “Best service I've ever had
+                        in a barbershop!”
+                    </div>
+
+                </div>
+
+                <div class="review-author">
+
+                    <strong>
+                        Claudio Gaspar
+                    </strong>
+
+                    <span>
+                        Client
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="review reveal reveal-delay-1">
+
+                <div>
+
+                    <div class="review-stars">
+                        ★★★★★
+                    </div>
+
+                    <div class="review-quote">
+                        “Very professional and friendly
+                        staff, recommended.”
+                    </div>
+
+                </div>
+
+                <div class="review-author">
+
+                    <strong>
+                        Jawad Qasem
+                    </strong>
+
+                    <span>
+                        Client
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="review reveal reveal-delay-2">
+
+                <div>
+
+                    <div class="review-stars">
+                        ★★★★★
+                    </div>
+
+                    <div class="review-quote">
+                        “Meilleure coiffure de Remich
+                        sans doute, bonne ambiance.”
+                    </div>
+
+                </div>
+
+                <div class="review-author">
+
+                    <strong>
+                        Didi Cardoso
+                    </strong>
+
+                    <span>
+                        Client
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     BOOKING
+     ============================================================ -->
+
+<section class="section booking" id="reservation">
+
+    <div class="container">
+
+        <div class="booking-layout">
+
+
+            <div class="booking-intro reveal">
+
+                <div class="section-label">
+                    Réservation
+                </div>
+
+                <h2 class="section-title">
+
+                    Votre prochain
+                    <br>
+                    <em>rendez-vous.</em>
+
+                </h2>
+
+                <p>
+                    Choisissez votre prestation et indiquez
+                    votre préférence de date et d'heure.
+                    Votre demande sera préparée dans WhatsApp
+                    afin que le salon puisse vous confirmer
+                    la disponibilité.
+                </p>
+
+
+                <div class="contact-mini">
+
+
+                    <a href="tel:+352691270850"
+                       class="contact-mini-item">
+
+                        <div class="contact-mini-icon">
+                            ☎
+                        </div>
+
+                        <span>
+                            +352 691 270 850
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="https://instagram.com/fa_star_beauty"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-mini-item">
+
+                        <div class="contact-mini-icon">
+                            ◎
+                        </div>
+
+                        <span>
+                            @fa_star_beauty
+                        </span>
+
+                    </a>
+
+
+                    <div class="contact-mini-item">
+
+                        <div class="contact-mini-icon">
+                            ⌖
+                        </div>
+
+                        <span>
+                            5 Rue du Pont, 5559 Remich
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-form reveal reveal-delay-1">
+
+                <div class="form-title">
+                    Demander un créneau
+                </div>
+
+
+                <form id="bookingForm">
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Nom
+                            </label>
+
+                            <input
+                                id="name"
+                                type="text"
+                                required
+                                placeholder="Votre nom"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="phone">
+                                Téléphone
+                            </label>
+
+                            <input
+                                id="phone"
+                                type="tel"
+                                required
+                                placeholder="+352 ..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="service">
+                            Prestation
+                        </label>
+
+                        <select id="service" required>
+
+                            <option value="">
+                                Choisir une prestation
+                            </option>
+
+                            <option>
+                                Coiffure homme
+                            </option>
+
+                            <option>
+                                Coiffure femme
+                            </option>
+
+                            <option>
+                                Coiffure enfant
+                            </option>
+
+                            <option>
+                                Manucure
+                            </option>
+
+                            <option>
+                                Épilation
+                            </option>
+
+                            <option>
+                                Microblading
+                            </option>
+
+                            <option>
+                                Autre / à préciser
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="date">
+                                Date souhaitée
+                            </label>
+
+                            <input
+                                id="date"
+                                type="date"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="time">
+                                Heure souhaitée
+                            </label>
+
+                            <input
+                                id="time"
+                                type="time"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Une précision concernant votre rendez-vous ?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button-primary form-submit">
+
+                        Envoyer la demande
+                        <span>→</span>
+
+                    </button>
+
+
+                    <div class="form-note">
+
+                        Votre demande ouvre WhatsApp avec
+                        un message pré-rempli. Le rendez-vous
+                        est confirmé par le salon selon ses disponibilités.
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     HOURS
+     ============================================================ -->
+
+<section class="section hours">
+
+    <div class="container">
+
+        <div class="hours-layout">
+
+
+            <div class="reveal">
+
+                <div class="section-label">
+                    Horaires
+                </div>
+
+                <h2 class="section-title">
+
+                    Trouvez
+                    <br>
+                    <em>votre moment.</em>
+
+                </h2>
+
+                <p class="section-description">
+                    Les horaires peuvent exceptionnellement
+                    varier. Contactez le salon directement
+                    pour confirmer votre disponibilité.
+                </p>
+
+            </div>
+
+
+            <div class="reveal reveal-delay-1">
+
+                <div class="hours-list">
+
+
+                    <div class="hours-row">
+                        <span>Lundi</span>
+                        <span>11:00 — 18:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Mardi</span>
+                        <span>10:00 — 20:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Mercredi</span>
+                        <span>10:00 — 20:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Jeudi</span>
+                        <span>10:00 — 20:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Vendredi</span>
+                        <span>10:00 — 20:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Samedi</span>
+                        <span>10:00 — 19:00</span>
+                    </div>
+
+                    <div class="hours-row">
+                        <span>Dimanche</span>
+                        <span>Fermé</span>
+                    </div>
+
+
+                </div>
+
+                <p class="hours-note">
+                    Pour connaître les disponibilités
+                    et demander un créneau, utilisez
+                    le formulaire de réservation ou
+                    contactez directement le salon.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     LOCATION
+     ============================================================ -->
+
+<section class="section location" id="contact">
+
+    <div class="container">
+
+        <div class="location-grid">
+
+
+            <div class="map-box">
+
+                <iframe
+                    title="Localisation F&A Star Beauty Salon"
+                    src="https://www.google.com/maps?q=5%20Rue%20du%20Pont,%205559%20Remich,%20Luxembourg&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+            </div>
+
+
+            <div class="location-info reveal">
+
+                <div class="section-label">
+                    Nous trouver
+                </div>
+
+                <h2>
+                    Au cœur de
+                    <br>
+                    <em>Remich.</em>
+                </h2>
+
+                <p>
+                    F&A Star Beauty Salon vous accueille
+                    au 5 Rue du Pont à Remich.
+                    Pour toute question concernant les
+                    prestations, les horaires ou les
+                    disponibilités, contactez directement
+                    le salon.
+                </p>
+
+
+                <div class="location-address">
+
+                    <strong>
+                        Adresse
+                    </strong>
+
+                    <span>
+                        5 Rue du Pont<br>
+                        5559 Remich<br>
+                        Luxembourg
+                    </span>
+
+                </div>
+
+
+                <div class="location-address">
+
+                    <strong>
+                        Téléphone
+                    </strong>
+
+                    <a href="tel:+352691270850">
+                        +352 691 270 850
+                    </a>
+
+                </div>
+
+
+                <div style="margin-top:30px;">
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=5+Rue+du+Pont+5559+Remich+Luxembourg"
+                        target="_blank"
+                        rel="noopener"
+                        class="button-secondary">
+
+                        Ouvrir dans Google Maps
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-top">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    F&A Star
+                </h2>
+
+                <p>
+                    Beauty salon à Remich dédié à la
+                    coiffure et aux soins beauté pour
+                    femmes, hommes et enfants.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-heading">
+                    Navigation
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="#accueil">
+                        Accueil
+                    </a>
+
+                    <a href="#salon">
+                        Le salon
+                    </a>
+
+                    <a href="#services">
+                        Services
+                    </a>
+
+                    <a href="#galerie">
+                        Galerie
+                    </a>
+
+                    <a href="#avis">
+                        Avis
+                    </a>
+
+                    <a href="#reservation">
+                        Réservation
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="footer-heading">
+                    Contact
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="tel:+352691270850">
+                        +352 691 270 850
+                    </a>
+
+                    <a
+                        href="https://instagram.com/fa_star_beauty"
+                        target="_blank"
+                        rel="noopener">
+
+                        Instagram
+
+                    </a>
+
+                    <a href="#contact">
+                        5 Rue du Pont
+                    </a>
+
+                    <a href="#contact">
+                        5559 Remich
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span>
+                F&A Star Beauty Salon.
+                Tous droits réservés.
+            </span>
+
+            <a
+                class="social-link"
+                href="https://instagram.com/fa_star_beauty"
+                target="_blank"
+                rel="noopener">
+
+                @fa_star_beauty
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<!-- ============================================================
+     FLOATING ACTIONS
+     ============================================================ -->
+
+<div class="floating-actions">
+
+
+    <a
+        class="float-button"
+        href="tel:+352691270850"
+        aria-label="Appeler">
+
+        ☎
+
+    </a>
+
+
+    <a
+        class="float-button"
+        href="https://wa.me/352691270850"
+        target="_blank"
+        rel="noopener"
+        aria-label="WhatsApp">
+
+        ◉
+
+    </a>
+
+
+    <a
+        class="float-button"
+        href="#reservation"
+        aria-label="Réserver">
+
+        ✦
+
+    </a>
+
+
+</div>
+
+
+<!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+
+<div class="lightbox" id="lightbox">
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Fermer">
+
+        ×
+
+    </button>
+
+
+    <button
+        class="lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Image précédente">
+
+        ‹
+
+    </button>
+
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt=""
+    >
+
+
+    <button
+        class="lightbox-next"
+        id="lightboxNext"
+        aria-label="Image suivante">
+
+        ›
+
+    </button>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .getElementById("preloader")
+            .classList.add("hide");
+
+    }, 650);
+
+});
+
+
+/* ============================================================
+   YEAR
+   ============================================================ */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+
+const navbar =
+    document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 40) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+
+window.addEventListener("scroll", () => {
+
+    const scrollTop =
+        window.scrollY;
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const percentage =
+        documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    document.getElementById("progress")
+        .style.width = percentage + "%";
+
+});
+
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("open");
+
+    document.body.classList.toggle(
+        "menu-open"
+    );
+
+});
+
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            mobileMenu.classList.remove("open");
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+        });
+
+    });
+
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+/* ============================================================
+   DATE MINIMUM
+   ============================================================ */
+
+const dateInput =
+    document.getElementById("date");
+
+const today =
+    new Date();
+
+const year =
+    today.getFullYear();
+
+const month =
+    String(today.getMonth() + 1)
+        .padStart(2, "0");
+
+const day =
+    String(today.getDate())
+        .padStart(2, "0");
+
+dateInput.min =
+    `${year}-${month}-${day}`;
+
+
+/* ============================================================
+   BOOKING → WHATSAPP
+   ============================================================ */
+
+const bookingForm =
+    document.getElementById("bookingForm");
+
+bookingForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name")
+                .value.trim();
+
+        const phone =
+            document.getElementById("phone")
+                .value.trim();
+
+        const service =
+            document.getElementById("service")
+                .value;
+
+        const date =
+            document.getElementById("date")
+                .value;
+
+        const time =
+            document.getElementById("time")
+                .value;
+
+        const message =
+            document.getElementById("message")
+                .value.trim();
+
+
+        const formattedDate =
+            date
+                ? date.split("-").reverse().join("/")
+                : "";
+
+
+        const whatsappMessage =
+
+`Bonjour F&A Star Beauty Salon,
+
+Je souhaiterais demander un rendez-vous.
+
+Nom : ${name}
+Téléphone : ${phone}
+Prestation : ${service}
+Date souhaitée : ${formattedDate}
+Heure souhaitée : ${time}
+
+Message :
+${message || "Aucune précision supplémentaire."}
+
+Merci de me confirmer si ce créneau est disponible.`;
+
+
+        const url =
+            "https://wa.me/352691270850?text=" +
+            encodeURIComponent(
+                whatsappMessage
+            );
+
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }
+);
+
+
+/* ============================================================
+   VIDEO
+   ============================================================ */
+
+const salonVideo =
+    document.getElementById("salonVideo");
+
+const videoPlay =
+    document.getElementById("videoPlay");
+
+
+if (salonVideo) {
+
+    salonVideo.addEventListener(
+        "error",
+        () => {
+
+            salonVideo.style.display =
+                "none";
+
+        }
+    );
+
+
+    videoPlay.addEventListener(
+        "click",
+        () => {
+
+            if (salonVideo.paused) {
+
+                salonVideo.play();
+
+                videoPlay.innerHTML =
+                    "❚❚";
+
+            } else {
+
+                salonVideo.pause();
+
+                videoPlay.innerHTML =
+                    "▶";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   LIGHTBOX GALLERY
+   ============================================================ */
+
+const galleryItems =
+    [...document.querySelectorAll(
+        ".gallery-item"
+    )];
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+const lightboxPrev =
+    document.getElementById(
+        "lightboxPrev"
+    );
+
+const lightboxNext =
+    document.getElementById(
+        "lightboxNext"
+    );
+
+
+let currentImage = 0;
+
+
+function openLightbox(index) {
+
+    currentImage = index;
+
+    const item =
+        galleryItems[currentImage];
+
+    const image =
+        item.querySelector("img");
+
+    lightboxImage.src =
+        image.src;
+
+    lightboxImage.alt =
+        image.alt;
+
+    lightbox.classList.add("open");
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+}
+
+
+function closeLightbox() {
+
+    lightbox.classList.remove("open");
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+}
+
+
+function changeImage(direction) {
+
+    currentImage += direction;
+
+    if (currentImage < 0) {
+
+        currentImage =
+            galleryItems.length - 1;
+
+    }
+
+    if (
+        currentImage >=
+        galleryItems.length
+    ) {
+
+        currentImage = 0;
+
+    }
+
+    openLightbox(currentImage);
+
+}
+
+
+galleryItems.forEach(
+    (item, index) => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                openLightbox(index);
+
+            }
+        );
+
+    }
+);
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightboxPrev.addEventListener(
+    "click",
+    () => changeImage(-1)
+);
+
+
+lightboxNext.addEventListener(
+    "click",
+    () => changeImage(1)
+);
+
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if (event.target === lightbox) {
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            !lightbox.classList.contains(
+                "open"
+            )
+        ) {
+            return;
+        }
+
+
+        if (event.key === "Escape") {
+
+            closeLightbox();
+
+        }
+
+
+        if (event.key === "ArrowLeft") {
+
+            changeImage(-1);
+
+        }
+
+
+        if (event.key === "ArrowRight") {
+
+            changeImage(1);
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   LANGUAGE SYSTEM
+   ============================================================ */
+
+const translations = {
+
+    fr: {
+
+        navHome: "Accueil",
+        navSalon: "Le salon",
+        navServices: "Services",
+        navGallery: "Galerie",
+        navReviews: "Avis",
+        navContact: "Contact",
+        book: "Réserver",
+
+        heroDescription:
+            "Une adresse beauté pensée autour du style, de la précision et d'une véritable attention portée à chaque personne.",
+
+        bookAppointment:
+            "Prendre rendez-vous",
+
+        discover:
+            "Découvrir le salon",
+
+        introTitle:
+            "Plus qu'une coiffure, un moment pour soi.",
+
+        introText:
+            "F&A Star Beauty Salon est une adresse dédiée à la coiffure et à la beauté à Remich. L'équipe accueille les femmes, les hommes et les enfants avec une approche professionnelle et personnalisée.",
+
+        servicesTitle:
+            "La beauté, dans le détail.",
+
+        servicesDescription:
+            "Une sélection de prestations pour les femmes, les hommes et les enfants, ainsi que différents soins beauté.",
+
+        serviceMen:
+            "Coiffure homme",
+
+        serviceMenText:
+            "Coupe, coiffage et prestations adaptées au style recherché.",
+
+        serviceWomen:
+            "Coiffure femme",
+
+        serviceWomenText:
+            "Des prestations pensées pour mettre en valeur votre personnalité.",
+
+        serviceKids:
+            "Coiffure enfant",
+
+        serviceKidsText:
+            "Des prestations adaptées aux plus jeunes dans une ambiance agréable.",
+
+        serviceNails:
+            "Manucure",
+
+        serviceNailsText:
+            "Prenez également soin de vos mains avec nos prestations de manucure.",
+
+        serviceWax:
+            "Épilation",
+
+        serviceWaxText:
+            "Des prestations beauté complémentaires pour une mise en beauté complète."
+
+    },
+
+
+    de: {
+
+        navHome: "Startseite",
+        navSalon: "Der Salon",
+        navServices: "Leistungen",
+        navGallery: "Galerie",
+        navReviews: "Bewertungen",
+        navContact: "Kontakt",
+        book: "Termin buchen",
+
+        heroDescription:
+            "Eine Beauty-Adresse in Remich, bei der Stil, Präzision und persönliche Aufmerksamkeit im Mittelpunkt stehen.",
+
+        bookAppointment:
+            "Termin vereinbaren",
+
+        discover:
+            "Salon entdecken",
+
+        introTitle:
+            "Mehr als ein Haarschnitt – Zeit für sich.",
+
+        introText:
+            "F&A Star Beauty Salon in Remich bietet professionelle Dienstleistungen für Frauen, Männer und Kinder mit persönlicher Beratung.",
+
+        servicesTitle:
+            "Schönheit, bis ins Detail.",
+
+        servicesDescription:
+            "Eine Auswahl an Leistungen für Frauen, Männer und Kinder sowie verschiedene Beauty-Behandlungen.",
+
+        serviceMen:
+            "Herrenfriseur",
+
+        serviceMenText:
+            "Haarschnitte und Styling passend zu Ihrem persönlichen Stil.",
+
+        serviceWomen:
+            "Damenfriseur",
+
+        serviceWomenText:
+            "Leistungen, die Ihre Persönlichkeit und Ihren Stil unterstreichen.",
+
+        serviceKids:
+            "Kinderfriseur",
+
+        serviceKidsText:
+            "Angenehme und passende Dienstleistungen für Kinder.",
+
+        serviceNails:
+            "Maniküre",
+
+        serviceNailsText:
+            "Pflege und Schönheit für Ihre Hände.",
+
+        serviceWax:
+            "Haarentfernung",
+
+        serviceWaxText:
+            "Ergänzende Beauty-Behandlungen für ein gepflegtes Erscheinungsbild."
+
+    },
+
+
+    en: {
+
+        navHome: "Home",
+        navSalon: "The salon",
+        navServices: "Services",
+        navGallery: "Gallery",
+        navReviews: "Reviews",
+        navContact: "Contact",
+        book: "Book",
+
+        heroDescription:
+            "A beauty destination in Remich focused on style, precision and genuine personal attention.",
+
+        bookAppointment:
+            "Book an appointment",
+
+        discover:
+            "Discover the salon",
+
+        introTitle:
+            "More than a haircut — a moment for yourself.",
+
+        introText:
+            "F&A Star Beauty Salon is a beauty and hair destination in Remich, welcoming women, men and children with a professional and personal approach.",
+
+        servicesTitle:
+            "Beauty, down to the detail.",
+
+        servicesDescription:
+            "A selection of services for women, men and children, together with additional beauty treatments.",
+
+        serviceMen:
+            "Men's hair",
+
+        serviceMenText:
+            "Haircuts and styling adapted to your preferred look.",
+
+        serviceWomen:
+            "Women's hair",
+
+        serviceWomenText:
+            "Services designed to enhance your personality and style.",
+
+        serviceKids:
+            "Children's hair",
+
+        serviceKidsText:
+            "Comfortable and suitable services for younger clients.",
+
+        serviceNails:
+            "Manicure",
+
+        serviceNailsText:
+            "Beauty and care for your hands.",
+
+        serviceWax:
+            "Hair removal",
+
+        serviceWaxText:
+            "Additional beauty treatments for a complete look."
+
+    }
+
+};
+
+
+const languageButtons =
+    document.querySelectorAll(
+        ".language-switcher button"
+    );
+
+
+function changeLanguage(language) {
+
+    const dictionary =
+        translations[language];
+
+    if (!dictionary) {
+        return;
+    }
+
+
+    document
+        .querySelectorAll("[data-i18n]")
+        .forEach(element => {
+
+            const key =
+                element.dataset.i18n;
+
+            if (dictionary[key]) {
+
+                element.textContent =
+                    dictionary[key];
+
+            }
+
+        });
+
+
+    languageButtons.forEach(button => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.lang === language
+        );
+
+    });
+
+
+    document.documentElement.lang =
+        language;
+
+
+    localStorage.setItem(
+        "fa-star-language",
+        language
+    );
+
+}
+
+
+languageButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            changeLanguage(
+                button.dataset.lang
+            );
+
+        }
+    );
+
+});
+
+
+const savedLanguage =
+    localStorage.getItem(
+        "fa-star-language"
+    );
+
+
+if (savedLanguage) {
+
+    changeLanguage(
+        savedLanguage
+    );
+
+}
+
+
+/* ============================================================
+   IMAGE FALLBACK
+   ============================================================ */
+
+/*
+   We intentionally DO NOT load stock images.
+
+   If an actual salon photo is missing,
+   the image simply becomes a dark placeholder.
+*/
+
+document
+    .querySelectorAll("img")
+    .forEach(image => {
+
+        image.addEventListener(
+            "error",
+            () => {
+
+                image.style.background =
+                    "linear-gradient(135deg,#151311,#080807)";
+
+                image.style.objectFit =
+                    "contain";
+
+                image.style.padding =
+                    "20px";
+
+                image.alt =
+                    "Photo F&A Star Beauty Salon";
+
+            }
+        );
+
+    });
+
+
+/* ============================================================
+   SMOOTH ANCHOR OFFSET
+   ============================================================ */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+                if (!target) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                const offset =
+                    window.innerWidth <= 700
+                    ? 75
+                    : 95;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect()
+                        .top +
+                    window.pageYOffset -
+                    offset;
+
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+    });
+
+
+/* ============================================================
+   HERO PARALLAX
+   ============================================================ */
+
+const heroImage =
+    document.querySelector(
+        ".hero-background img"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (
+            window.innerWidth < 700 ||
+            !heroImage
+        ) {
+            return;
+        }
+
+
+        const scroll =
+            window.scrollY;
+
+
+        if (scroll < window.innerHeight) {
+
+            heroImage.style.transform =
+                `translateY(${scroll * .08}px) scale(1.01)`;
+
+        }
+
+    },
+    { passive: true }
+);
+
+</script>
+
+</body>
+</html>
